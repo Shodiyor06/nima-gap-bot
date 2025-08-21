@@ -6,8 +6,8 @@ def start(update: Update, context: CallbackContext):
     user = update.effective_user
 
     update.message.reply_text(
-        text=f'Assalomu alaykum *{user.first_name}*',
-        parse_mode=ParseMode.MARKDOWN_V2,
+        text=f'Assalomu alaykum {user.first_name}',
+        # parse_mode=ParseMode.MARKDOWN_V2,
         reply_markup=ReplyKeyboardMarkup(
             keyboard=[
                 [
@@ -85,3 +85,23 @@ def choose_language(update: Update, context: CallbackContext):
 
     update.callback_query.message.reply_text(f"siz {langs[lan]} tilini tanladingiz")
 
+def about_us(update: Update, context: CallbackContext):
+    update.message.reply_text("📍 Biz shu yerda joylashganmiz")
+    update.message.reply_text(
+        text='📧 Email yozish uchun <a href="mailto:example@gmail.com">bu yerga bosing</a>',
+        parse_mode=ParseMode.MARKDOWN
+    )
+
+def comment(update: Update, context: CallbackContext):
+    update.message.reply_text(
+        f"""*Buyurtma berish uchun asosiy menyudagi “Buyurtma” tugmasidan foydalaning*.
+
+Biz sizning fikr-mulohazalaringizni juda qadrlaymiz! Buyurtma berganingizdan so'ng, o'z fikr va mulohazalaringizni shu yerda qoldirishingiz mumkin""",
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=ReplyKeyboardMarkup(
+            keyboard=[
+                [KeyboardButton("Orqaga")]
+            ],
+            resize_keyboard=True
+        )   
+    )
